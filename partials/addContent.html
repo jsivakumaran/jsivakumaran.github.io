@@ -1,0 +1,12 @@
+<h1>Add a link to Share!</h1>
+<div ng-controller="LinkCtrl">
+  <form ng-submit="addThenHome()" type="text">
+    <div class="form-group">
+      <input type="text" ng-model="LinkFactory.title" placeholder="Title" class="form-control">
+      <input type="text" ng-model="LinkFactory.link" placeholder="Link" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-lg btn-success">Submit</button>
+  </form>
+
+  <a ui-sref="newsList"> Return to List of Links </a>
+</div>
