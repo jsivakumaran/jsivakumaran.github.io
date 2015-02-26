@@ -1,2 +1,11 @@
-<h1>Comments<a ui-sref="addComment">Add Comment</a></h1>
-<h1>{{$stateParams.linkId}}</h1>
+<div ng-controller="CommentCtrl">
+  <h1>Comments<a ui-sref="addComment">Add Comment</a></h1>
+  <h6>{{link.title}}</h6>
+  <br>
+  <form ng-submit="addComment(link)">
+    <div class="form-group">
+      <input type="text" placeholder="add comment" class="form-control">
+    </div>
+  <button type="submit" class="btn btn-success">Add Comment </button>
+</form>
+</div>
