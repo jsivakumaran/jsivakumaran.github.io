@@ -31,6 +31,7 @@ factory.login = function(){
   factory.upvote = function(link) {
     link.upvotes++;
     factory.rank();
+    factory.links.$save(link);
   };
 
   factory.rank = function() {
@@ -48,7 +49,6 @@ factory.login = function(){
       link.rankVal = link.id * idMultiplier * 0.20
         + link.upvotes * upvoteMultiplier * 0.80;
     });
-    factory.links.$save();
   };
 
   return factory;
