@@ -12,4 +12,9 @@ slackerNews.config(function($stateProvider) {
     templateUrl: "partials/addContent.html"
   });
 
+  $stateProvider.state('comments', {
+    url:"/:linkId",
+    templateUrl: "partials/comments.html"
+  })
+
 });

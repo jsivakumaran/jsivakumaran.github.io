@@ -3,10 +3,10 @@ slackerNews.factory("LinkFactory", ['$firebase', function LinkFactory($firebase)
 
   var ref = new Firebase("https://glaring-inferno-5851.firebaseio.com/links");
   // create an AngularFire reference to the data
-  var sync = $firebase(ref);
-  var syncArray = sync.$asArray();
+  var links = $firebase(ref).$asArray();
   // synchronize the object with a three-way data binding
-  factory.links = syncArray;
+  factory.links = links;
+
 
 factory.login = function(){
   ref.authWithOAuthPopup("google", function(error, authData) {
@@ -19,21 +19,30 @@ factory.login = function(){
 }
 
 
+// var list = $firebase(ref).$asArray();
+// list.$loaded()
+// .then(function(x) {
+//   x === list; // true
+// })
+// .catch(function(error) {
+//   console.log("Error:", error);
+// });
+
   factory.addLink = function() {
-   factory.links.$add({ title: factory.title,
+    factory.links.$add({ title: factory.title,
       link: factory.link,
       id: factory.links.length + 1,
-      upvotes: 0
+      upvotes: 0,
+      rankVal: 3.1415936
     });
-
-    setTimeout(factory.rank(),1000);
-
+    links.$loaded().then(factory.rank());
   };
 
   factory.upvote = function(link) {
     link.upvotes++;
     factory.rank();
   };
+
 
   factory.rank = function() {
     var totalUpvotes=0;
