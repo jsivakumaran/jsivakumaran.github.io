@@ -4,7 +4,7 @@
   <h1>Links <a ui-sref="addContent">Add Link<a></h1>
   <ol>
     <li ng-repeat="item in links | orderBy:'rankVal':true">
-      <span ng-click="LinkFactory.upvote(item)" class="upvote">&#9757;  </span><a href="{{item.link}}">{{item.title}} {{item.upvotes}}  {{item.rankVal}}</a>
+      <span ng-click="LinkFactory.upvote(item)" class="upvote">&#9757;  </span><h6><a href="{{item.link}}">{{item.title}}</a><small> ID:{{item.id}}, Votes:{{item.upvotes}}, Rank:{{item.rankVal.toFixed(5)}}</small></h6>
     </li>
   </ol>
 </div>

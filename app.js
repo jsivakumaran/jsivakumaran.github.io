@@ -12,5 +12,4 @@ slackerNews.config(function($stateProvider) {
     templateUrl: "partials/addContent.html"
   });
 
-
 });

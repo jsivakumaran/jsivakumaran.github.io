@@ -20,18 +20,19 @@ factory.login = function(){
 
 
   factory.addLink = function() {
-    factory.links.$add({ title: factory.title,
+   factory.links.$add({ title: factory.title,
       link: factory.link,
       id: factory.links.length + 1,
-      upvotes: 0,
-      rankVal: 0
+      upvotes: 0
     });
+
+    setTimeout(factory.rank(),1000);
+
   };
 
   factory.upvote = function(link) {
     link.upvotes++;
     factory.rank();
-    factory.links.$save(link);
   };
 
   factory.rank = function() {
@@ -44,10 +45,11 @@ factory.login = function(){
       }
     });
     var idMultiplier = 100 / highId;
-    var upvoteMultiplier = 100 / totalUpvotes;
+    var upvoteMultiplier = 100 / (totalUpvotes + 1);
     factory.links.forEach(function(link) {
       link.rankVal = link.id * idMultiplier * 0.20
         + link.upvotes * upvoteMultiplier * 0.80;
+      factory.links.$save(link);
     });
   };
 
