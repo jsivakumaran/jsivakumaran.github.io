@@ -8,6 +8,7 @@ slackerNews.factory("LinkFactory", ['$firebase', function LinkFactory($firebase)
   // synchronize the object with a three-way data binding
   factory.links = syncArray;
 
+factory.login = function(){
   ref.authWithOAuthPopup("google", function(error, authData) {
     if (error) {
       console.log("Login Failed!", error);
@@ -15,6 +16,7 @@ slackerNews.factory("LinkFactory", ['$firebase', function LinkFactory($firebase)
       console.log("Authenticated successfully with payload:", authData);
     }
   });
+}
 
 
   factory.addLink = function() {

@@ -1,5 +1,6 @@
 <div ng-controller="LinkCtrl">
-  <span ng-click="addLink()">++++++++</span>
+  <button ng-click="factory.login()"></button>
+
   <h1>Links <a ui-sref="addContent">Add Link<a></h1>
   <ol>
     <li ng-repeat="item in links | orderBy:'rankVal':true">
