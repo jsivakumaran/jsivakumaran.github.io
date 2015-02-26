@@ -2,10 +2,13 @@
   <h1>Comments<a ui-sref="addComment">Add Comment</a></h1>
   <h6>{{link.title}}</h6>
   <br>
-  <form ng-submit="addComment(link)">
+  <form ng-submit="addComment()">
     <div class="form-group">
-      <input type="text" placeholder="add comment" class="form-control">
+      <input ng-model="comment" type="text" placeholder="add comment" class="form-control">
     </div>
   <button type="submit" class="btn btn-success">Add Comment </button>
 </form>
+<div class="well">
+  {{link.comment}}
+</div>
 </div>

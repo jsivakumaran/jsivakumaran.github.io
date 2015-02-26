@@ -62,5 +62,10 @@ factory.login = function(){
     });
   };
 
+  factory.addComment = function(link, comment){
+    link.comment = comment;
+    factory.links.$save(link);
+  }
+
   return factory;
 }]);
