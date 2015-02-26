@@ -9,6 +9,10 @@
   <button type="submit" class="btn btn-success">Add Comment </button>
 </form>
 <div class="well">
-  {{link.comment}}
+  <ol>
+    <li ng-repeat=" item in (link.comments)" ng-hide="$last">
+      {{item}}
+</li>
+</ol>
 </div>
 </div>

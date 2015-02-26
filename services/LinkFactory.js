@@ -18,22 +18,13 @@ factory.login = function(){
   });
 }
 
-
-// var list = $firebase(ref).$asArray();
-// list.$loaded()
-// .then(function(x) {
-//   x === list; // true
-// })
-// .catch(function(error) {
-//   console.log("Error:", error);
-// });
-
   factory.addLink = function() {
     factory.links.$add({ title: factory.title,
       link: factory.link,
       id: factory.links.length + 1,
       upvotes: 0,
-      rankVal: 3.1415936
+      rankVal: 3.1415936,
+      comments: {count: 0}
     });
     links.$loaded().then(factory.rank());
   };
@@ -63,7 +54,9 @@ factory.login = function(){
   };
 
   factory.addComment = function(link, comment){
-    link.comment = comment;
+    var newCount = link.comments.count + 1
+    link.comments.count = newCount
+    link.comments[newCount] = comment
     factory.links.$save(link);
   }
 
