@@ -24,7 +24,8 @@ factory.login = function(){
       id: factory.links.length + 1,
       upvotes: 0,
       rankVal: 3.1415936,
-      comments: {count: 0}
+      comments: {count: 0},
+      date: Date.now()
     });
     links.$loaded().then(factory.rank());
   };
@@ -34,6 +35,21 @@ factory.login = function(){
     factory.rank();
   };
 
+  factory.timeElapsed = function(date){
+    var date_string = "";
+    var millisec =  Date.now() - date;
+    var days = Math.floor(millisec / 86400000);
+    var hours = Math.floor((millisec % 86400000)/3600000);
+    var minutes = Math.floor(((millisec % 86400000)%3600000)/60000);
+    if (days !== 0){
+      date_string += days + " days ";
+    }
+    if(hours !==0){
+      date_string += hours +" hours ";
+    }
+
+    return date_string += minutes + " minute(s) ago";
+  };
 
   factory.rank = function() {
     var totalUpvotes=0;
@@ -57,6 +73,7 @@ factory.login = function(){
     var newCount = link.comments.count + 1
     link.comments.count = newCount
     link.comments[newCount] = comment
+
     factory.links.$save(link);
   }
 

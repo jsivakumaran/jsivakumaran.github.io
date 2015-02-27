@@ -9,7 +9,7 @@
         <span ng-click="LinkFactory.upvote(item)" class="upvote">&#9757;  </span>
         <a href="{{item.link}}">{{item.title}}</a>
         <small>
-          ID:{{item.id}}, Votes:{{item.upvotes}}, Rank:{{item.rankVal.toFixed(5)}}
+          Posted: {{LinkFactory.timeElapsed(item.date)}}, ID:{{item.id}}, Votes:{{item.upvotes}}, Rank:{{item.rankVal.toFixed(5)}}
           <a ui-sref="comments({ linkId: item.id})">discuss</a>
         </small>
       </h6>
