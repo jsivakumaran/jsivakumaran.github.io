@@ -1,7 +1,4 @@
 <div ng-controller="LinkCtrl">
-  <button ng-click="LinkFactory.login()">Login</button>
-  <button ng-click="LinkFactory.rank()">Rerank</button>
-
   <h1>Links <a ui-sref="addContent">Add Link<a></h1>
   <ol>
     <li ng-repeat="item in links | orderBy:'rankVal':true">
@@ -9,11 +6,10 @@
         <span ng-click="LinkFactory.upvote(item)" class="upvote">&#9757;  </span>
         <a href="{{item.link}}">{{item.title}}</a>
         <small>
-          Posted: {{LinkFactory.timeElapsed(item.date)}}, ID:{{item.id}}, Votes:{{item.upvotes}}, Rank:{{item.rankVal.toFixed(5)}}
+          Posted: {{LinkFactory.timeElapsed(item.date)}}, Votes:{{item.upvotes}}
           <a ui-sref="comments({ linkId: item.id})">discuss</a>
         </small>
       </h6>
     </li>
   </ol>
-  {{links}}
 </div>
